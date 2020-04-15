@@ -22,17 +22,15 @@
     </nav>
     
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <li><a href="">Home</a></li>
+        <li><a href="">Add A Recipe</a></li>
+        <li><a href="">Add A Category</a></li>
     </ul>
 </header>
-
-{% for blah in categories %}
-    <h1>{{blah.category_name}}
-</h1>
-{% endfor %}
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

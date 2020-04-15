@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+    {% for recipe in recipes %}
+        <div>
+            <img class="col s12" src="{{recipe.recipe_image}}" alt="recipe image">
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

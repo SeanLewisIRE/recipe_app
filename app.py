@@ -9,9 +9,9 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:NecfIPUD5PTBlYMe@practicecluster-t
 mongo = PyMongo(app)
 
 @app.route('/')
-def home_page():
-    categories = mongo.db.meal_category.find()
-    return render_template("base.html", categories=categories)
+def recipes_page():
+    recipes = mongo.db.recipes.find()
+    return render_template("recipes.html", recipes=recipes)
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(
