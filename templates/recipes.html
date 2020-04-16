@@ -4,7 +4,7 @@
     <div class="row">
     {% for recipe in recipes %}
         <div>
-            <img class="col s12" src="{{recipe.recipe_image}}" alt="recipe image">
+            <a href="{{url_for('get_recipe', recipe_id=recipe._id)}}"><img class="col s12" src="{{recipe.recipe_image}}" alt="recipe image"></a>
         </div>
     {% endfor %}
     </div>
