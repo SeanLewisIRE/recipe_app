@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <form action="{{url_for('insert_recipe')}}" method="POST" class="col s12">
+    <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="col s12">
         <div class="input-field col s12">
             <i class="material-icons prefix">local_dining</i>
             <input id="recipe_name" name="recipe_name" type="text" value="{{recipe.recipe_name}}">
@@ -11,13 +11,13 @@
 
         <div class="input-field col s12">
             <i class="material-icons prefix">local_grocery_store</i>
-            <input id="ingredients" name="ingredients" type="text" value="{{recipe.ingredients}}">
+            <textarea id="ingredients" name="ingredients" class="materialize-textarea">{{recipe.ingredients}}</textarea>
             <label for="ingredients">Ingredients*</label>
         </div>
 
         <div class="input-field col s12">
             <i class="material-icons prefix">local_library</i>
-            <textarea id="instructions" name="instructions" class="materialize-textarea" value="{{recipe.instructions}}"></textarea>
+            <textarea id="instructions" name="instructions" class="materialize-textarea" >{{recipe.instructions}}</textarea>
             <label for="instructions">Instructions*</label>
         </div>
 
