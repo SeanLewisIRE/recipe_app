@@ -1,3 +1,7 @@
 li {
     list-style-type: circle;
 }
+
+.card-row {
+    margin: 0 auto;
+}
