@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <form action="{{url_for('insert_category')}}" method="POST" class="col s12">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">local_dining</i>
+            <input id="category_name" name="category_name" type="text">
+            <label for="category_name">Meal Category</label>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
+{% endblock %}
