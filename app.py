@@ -31,8 +31,10 @@ def insert_recipe():
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
+    categories = mongo.db.meal_category.find()
     _recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('editrecipe.html', recipe=_recipe)
+
+    return render_template('editrecipe.html', recipe=_recipe, categories = categories)
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
@@ -44,7 +46,8 @@ def update_recipe(recipe_id):
         'recipe_intro': request.form.get('recipe_intro'),
         'ingredients': request.form.get('ingredients'),
         'instructions': request.form.get('instructions'),
-        'recipe_image': request.form.get('recipe_image')
+        'recipe_image': request.form.get('recipe_image'),
+        'category_name': request.form.get('category_name')
     })
     return redirect(url_for('recipes_page'))
 

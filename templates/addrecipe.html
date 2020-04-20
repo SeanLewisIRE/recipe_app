@@ -40,7 +40,7 @@
             <select id="category" name="category_name">
                 <option value="" disabled selected>Choose the category</option>
                 {% for category in categories %}
-                <option value="{category.category_name}}">{{category.category_name.capitalize()}}</option>
+                <option name="category_name" value="{category.category_name}}">{{category.category_name.capitalize()}}</option>
                 {% endfor %}
             </select>
             <label>Meal Category</label>
