@@ -15,8 +15,11 @@
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">{{recipe.recipe_name.title()}}<i class="material-icons right">close</i></span>
+                {% if %}
                 <h5>{{recipe.category_name.title()}}</h5>
+                {% endif %}
                 <p>{{recipe.recipe_intro}}</p>
+                <a href="{{url_for('get_recipe', recipe_id=recipe._id)}}">Check out this recipe!</a>
             </div>
         </div>
         </div>
