@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row">
     {% for recipe in recipes %}
-        <div class="">
+        <div class="card-container">
         <div class="card col s12 m6 l3">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="{{recipe.recipe_image}}" alt="image of recipe">
@@ -15,10 +15,8 @@
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">{{recipe.recipe_name.title()}}<i class="material-icons right">close</i></span>
-                {% if %}
-                <h5>{{recipe.category_name.title()}}</h5>
-                {% endif %}
-                <p>{{recipe.recipe_intro}}</p>
+                    <h5>Category: {{recipe.category_name.title()}}</h5>
+                    <p>{{recipe.recipe_intro.title()}}</p>
                 <a href="{{url_for('get_recipe', recipe_id=recipe._id)}}">Check out this recipe!</a>
             </div>
         </div>

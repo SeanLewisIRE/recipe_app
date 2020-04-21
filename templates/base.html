@@ -13,10 +13,10 @@
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Recipe Share</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="">Home</a></li>
-                <li><a href="">Add A Recipie</a></li>
-                <li><a href="">Add/Edit A Category</a></li>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="{{url_for('recipes_page')}}">Home</a></li>
+                <li><a href="{{url_for('add_recipe')}}">Add A Recipe</a></li>
+                <li><a href="{{url_for('manage_categories')}}">Manage Categories</a></li>
             </ul>
         </div>
     </nav>
@@ -24,8 +24,7 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{{url_for('recipes_page')}}">Home</a></li>
         <li><a href="{{url_for('add_recipe')}}">Add A Recipe</a></li>
-        <li><a href="{{url_for('manage_categories')}}">Manage Categories</a></li>
-    </ul>
+        <li><a href="{{url_for('manage_categories')}}">Manage Categories</a></li>    </ul>
 </header>
 <div class="container">
     {% block content %}

@@ -5,30 +5,27 @@
     <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="col s12">
         <div class="input-field col s12">
             <i class="material-icons prefix">local_dining</i>
-            <input id="recipe_name" name="recipe_name" type="text" value="{{recipe.recipe_name}}">
+            <input id="recipe_name" name="recipe_name" type="text" value="{{recipe.recipe_name}}" required>
             <label for="recipe_name">Recipe name</label>
         </div>
 
         <div class="input-field col s12">
             <i class="material-icons prefix">local_library</i>
-            <textarea id="recipe_intro" name="recipe_intro" class="materialize-textarea">{{recipe.recipe_intro}}</textarea>
+            <textarea id="recipe_intro" name="recipe_intro" class="materialize-textarea" required>{{recipe.recipe_intro}}</textarea>
             <label for="recipe_intro">Introduction</label>
         </div>
 
         <div class="input-field col s12">
             <i class="material-icons prefix">local_grocery_store</i>
-            <textarea id="ingredients" name="ingredients" class="materialize-textarea">{{recipe.ingredients}}</textarea>
+            <textarea id="ingredients" name="ingredients" class="materialize-textarea" required>{{recipe.ingredients}}</textarea>
             <label for="ingredients">Ingredients*</label>
         </div>
 
         <div class="input-field col s12">
             <i class="material-icons prefix">build</i>
-            <textarea id="instructions" name="instructions" class="materialize-textarea" >{{recipe.instructions}}</textarea>
+            <textarea id="instructions" name="instructions" class="materialize-textarea" required>{{recipe.instructions}}</textarea>
             <label for="instructions">Instructions*</label>
         </div>
-
-        <span><strong>*</strong> To break these into lists for viewing, add a full-stop where you wish for the
-            introduction of a new list item. </span>
 
         <div class="input-field col s12">
             <i class="material-icons prefix">add_a_photo</i>
@@ -38,17 +35,24 @@
 
         <div class="input-field col s12">
             <i class="material-icons prefix">poll</i>
-            <select id="category" name="category_name">
-                <option value="" disabled selected>Choose the category</option>
+            <select id="category" name="category_name" required>
+                <option value="" disabled>Choose the category</option>
                 {% for category in categories %}
-                <option value="{{category.category_name}}">{{category.category_name.capitalize()}}</option>
+                <option value="{{category.category_name}}" selected>{{category.category_name.capitalize()}}</option>
                 {% endfor %}
             </select>
             <label>Meal Category</label>
         </div>
+        <p><strong>*</strong> To break these into lists for viewing, add a full-stop where you wish for the
+    introduction of a new list item. </p>
+
+        <div class="row">
         <button class="btn waves-effect waves-light" type="submit">Edit Recipe
             <i class="material-icons right">send</i>
         </button>
+        </div>
     </form>
+    <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+        class="waves-effect waves-light btn_small btn">Delete</a>
 </div>
 {% endblock %}

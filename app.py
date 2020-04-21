@@ -30,7 +30,28 @@ def add_recipe():
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    if request.form.get('recipe_image') != '':
+        recipes.insert_one(
+            {
+            'recipe_name': request.form.get('recipe_name'),
+            'recipe_intro': request.form.get('recipe_intro'),
+            'ingredients': request.form.get('ingredients'),
+            'instructions': request.form.get('instructions'),
+            'recipe_image': request.form.get('recipe_image'),
+            'category_name': request.form.get('category_name'),
+            'is_favorite': False
+            })
+    else: 
+        recipes.insert_one(
+            {
+            'recipe_name': request.form.get('recipe_name'),
+            'recipe_intro': request.form.get('recipe_intro'),
+            'ingredients': request.form.get('ingredients'),
+            'instructions': request.form.get('instructions'),
+            'recipe_image': 'https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+            'category_name': request.form.get('category_name'),
+            'is_favorite': False
+            })
     return redirect(url_for('recipes_page'))
 
 
@@ -38,24 +59,29 @@ def insert_recipe():
 def edit_recipe(recipe_id):
     categories = mongo.db.meal_category.find()
     _recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-
     return render_template('editrecipe.html', recipe=_recipe, categories=categories)
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
-    recipes.update({'_id': ObjectId(recipe_id)}, 
+    recipes.update({'_id': ObjectId(recipe_id)},
     {
         'recipe_name': request.form.get('recipe_name'),
         'recipe_intro': request.form.get('recipe_intro'),
         'ingredients': request.form.get('ingredients'),
         'instructions': request.form.get('instructions'),
         'recipe_image': request.form.get('recipe_image'),
-        'category_name': request.form.get('category_name')
+        'category_name': request.form.get('category_name'),
+        'is_favorite': request.form.get('is_favorite')
     })
     return redirect(url_for('recipes_page'))
 
+
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('recipes_page'))
 
 @app.route('/manage_categories')
 def manage_categories():
@@ -89,6 +115,11 @@ def insert_category():
     categories.insert_one(request.form.to_dict())
     return redirect(url_for('manage_categories'))
 
+
+@app.route('/delte_category/<category_id>')
+def delete_category(category_id):
+    mongo.db.meal_category.remove({'_id': ObjectId(category_id)})
+    return redirect(url_for('manage_categories'))
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(
