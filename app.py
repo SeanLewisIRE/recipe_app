@@ -34,24 +34,22 @@ def insert_recipe():
     if request.form.get('recipe_image') != '':
         recipes.insert_one(
             {
-            'recipe_name': request.form.get('recipe_name'),
-            'recipe_intro': request.form.get('recipe_intro'),
-            'ingredients': request.form.get('ingredients'),
-            'instructions': request.form.get('instructions'),
-            'recipe_image': request.form.get('recipe_image'),
-            'category_name': request.form.get('category_name'),
-            'is_favorite': False
+                'recipe_name': request.form.get('recipe_name'),
+                'recipe_intro': request.form.get('recipe_intro'),
+                'ingredients': request.form.get('ingredients'),
+                'instructions': request.form.get('instructions'),
+                'recipe_image': request.form.get('recipe_image'),
+                'category_name': request.form.get('category_name')
             })
-    else: 
+    else:
         recipes.insert_one(
             {
-            'recipe_name': request.form.get('recipe_name'),
-            'recipe_intro': request.form.get('recipe_intro'),
-            'ingredients': request.form.get('ingredients'),
-            'instructions': request.form.get('instructions'),
-            'recipe_image': 'https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-            'category_name': request.form.get('category_name'),
-            'is_favorite': False
+                'recipe_name': request.form.get('recipe_name'),
+                'recipe_intro': request.form.get('recipe_intro'),
+                'ingredients': request.form.get('ingredients'),
+                'instructions': request.form.get('instructions'),
+                'recipe_image': 'https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+                'category_name': request.form.get('category_name')
             })
     return redirect(url_for('recipes_page'))
 
@@ -82,12 +80,15 @@ def update_recipe(recipe_id):
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('recipes_page'))
+    return redirect(url_for('manage_recipes'))
+
 
 @app.route('/manage_categories')
 def manage_categories():
     category = mongo.db.meal_category.find()
+    print(category.count())
     return render_template('managecategories.html', categories=category)
+
 
 @app.route('/edit_category/<category_id>')
 def edit_category(category_id):

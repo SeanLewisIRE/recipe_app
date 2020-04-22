@@ -14,9 +14,9 @@
 <header>
     <nav>
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Recipe Share</a>
+            <a href="{{url_for('recipes_page')}}" class="brand-logo">Recipe Share</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="sidenav" id="mobile-demo">
+            <ul class="right hide-on-med-and-down">
                 <li><a href="{{url_for('recipes_page')}}">Recipes</a></li>
                 <li><a href="{{url_for('manage_recipes')}}">Manage Recipes</a></li>
                 <li><a href="{{url_for('manage_categories')}}">Manage Categories</a></li>
@@ -27,7 +27,8 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{{url_for('recipes_page')}}">Recipes</a></li>
         <li><a href="{{url_for('manage_recipes')}}">Manage Recipes</a></li>
-        <li><a href="{{url_for('manage_categories')}}">Manage Categories</a></li>    </ul>
+        <li><a href="{{url_for('manage_categories')}}">Manage Categories</a></li>    
+    </ul>
 </header>
 <div class="container">
     {% block content %}

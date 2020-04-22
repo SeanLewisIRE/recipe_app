@@ -2,82 +2,97 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <h4 class="header">Manage Recipes</h4>
-    <ul class="collapsible">
-        {% for recipe in recipes %}
-        <li>
-            <div class="collapsible-header">
-                <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
-                    class="waves-effect waves-light btn_small btn blue">Edit</a>
-                <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
-                    class="waves-effect waves-light btn_small btn red">Delete</a>
-                
-                <div class="col s9 task_header">
-                    <strong class="header">{{recipe.recipe_name}} </strong>
-                </div>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-
-<h5 class="header">Add A New Recipe</h5>
-<div class="row">
-    <div class="row">
-        <form action="{{url_for('insert_recipe')}}" method="POST" class="col s12">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">local_dining</i>
-                <input id="recipe_name" name="recipe_name" type="text" required>
-                <label for="recipe_name">Recipe name</label>
-            </div>
-        
-            <div class="input-field col s12">
-                <i class="material-icons prefix">local_library</i>
-                <textarea id="recipe_intro" name="recipe_intro" class="materialize-textarea" required></textarea>
-                <label for="recipe_intro">Introduction</label>
-            </div>
-        
-            <div class="input-field col s12">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <textarea id="ingredients" name="ingredients" class="materialize-textarea" required></textarea>
-                <label for="ingredients">Ingredients*</label>
-            </div>
-        
-            <div class="input-field col s12">
-                <i class="material-icons prefix">build</i>
-                <textarea id="instructions" name="instructions" class="materialize-textarea" required></textarea>
-                <label for="instructions">Instructions*</label>
-            </div>
-        
-            <div class="input-field col s12">
-                <i class="material-icons prefix">add_a_photo</i>
-                <input id="recipe_image" name="recipe_image" type="url">
-                <label for="recipe_image">Image URL</label>
-            </div>
-        
-            <div class="input-field col s12">
-                <i class="material-icons prefix">poll</i>
-                <select id="category" name="category_name" required>
-                    <option value="" disabled selected>Choose the category</option>
-                    {% for category in categories %}
-                    <option name="category_name" value="{{category.category_name}}">{{category.category_name.capitalize()}}
-                    </option>
+    <div class="col s12 m9 offset-m1 l7 offset-l2">
+        <div class="row">
+            <h4 class="header">Manage Recipes</h4>
+            <ul class="collapsible">
+                {% if recipes.count() != 0: %}
+                    {% for recipe in recipes %}
+                    <li>
+                        <div class="collapsible-header">
+                            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
+                                class="waves-effect waves-light btn_small btn blue">Edit</a>
+                            <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+                                class="waves-effect waves-light btn_small btn red">Delete</a>
+                            
+                            <div class="col s9 task_header">
+                                <strong class="header">{{recipe.recipe_name}} </strong>
+                            </div>
+                        </div>
+                    </li>
                     {% endfor %}
-                </select>
-                <label>Meal Category</label>
+                {% else: %}
+                    <li>
+                        <div class="collapsible-header">
+                            <a href="" class="waves-effect waves-light btn_small btn blue disabled">Edit</a>
+                            <a href="" class="waves-effect waves-light btn_small btn red disabled">Delete</a>
+                            <div class="col s9 task_header">
+                                No recipes in here yet, add one below! Make sure you have a category ready to use, you can take care of that <a href="{{manage_categories}}"> here.</a>
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <h5 class="header">Add A New Recipe</h5>
+        <div class="row">
+            <div class="row">
+                <form action="{{url_for('insert_recipe')}}" method="POST" class="col s12">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">local_dining</i>
+                        <input id="recipe_name" name="recipe_name" type="text" required>
+                        <label for="recipe_name">Recipe name</label>
+                    </div>
+                
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">local_library</i>
+                        <textarea id="recipe_intro" name="recipe_intro" class="materialize-textarea" required></textarea>
+                        <label for="recipe_intro">Introduction</label>
+                    </div>
+                
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">local_grocery_store</i>
+                        <textarea id="ingredients" name="ingredients" class="materialize-textarea" required></textarea>
+                        <label for="ingredients">Ingredients*</label>
+                    </div>
+                
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">build</i>
+                        <textarea id="instructions" name="instructions" class="materialize-textarea" required></textarea>
+                        <label for="instructions">Instructions*</label>
+                    </div>
+                
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">add_a_photo</i>
+                        <input id="recipe_image" name="recipe_image" type="url">
+                        <label for="recipe_image">Image URL</label>
+                    </div>
+                
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">poll</i>
+                        <select id="category" name="category_name" required>
+                            <option value="" disabled selected>Choose the category</option>
+                            {% for category in categories %}
+                            <option name="category_name" value="{{category.category_name}}">{{category.category_name.capitalize()}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <label>Meal Category</label>
+                    </div>
+                
+                    <p class='col s12'><strong>*</strong> These will form into lists automatically to allow for greater readability on the recipes page. <br/>A new list item is created following each "."
+                    </p>
+                
+                    <div class='row add-button'>
+                        <button class="btn waves-effect waves-light" type="submit">Add Recipe
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                
+                </form>
             </div>
-        
-            <p class='col s12'><strong>*</strong> To break these into lists for viewing, add a full-stop where you wish for the
-                introduction of a new list item.
-            </p>
-        
-            <div class='row add-button'>
-                <button class="btn waves-effect waves-light" type="submit">Add Recipe
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
-        
-        </form>
+        </div>
     </div>
 </div>
 {% endblock %}

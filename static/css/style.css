@@ -13,25 +13,36 @@ form {
     background: #ee6e73;
 }
 
+.sidenav li {
+    padding-top: 20px;
+}
+
 .sidenav li a {
     font-size: 20px;
-    padding-top: 20px;
-    color: #ffffff;
+    color: #ffffff
 }
 
 .sidenav li:first-child {
     margin-top: 80px;
 }
 
+.nav-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
 /* Recipes Page */
 
 .card {
-    margin: 1rem 0;
+    margin: 1rem;
+    height: 425px;
 }
 
-.activator {
+.card-image img {
     padding: 0.5rem 0;
-    max-height: 350px;
+    height: 250px;
+    width: 100%;
+    object-fit: contain;
 }
 
 .card .card-title {
@@ -85,10 +96,6 @@ form {
     padding: 0 0.75rem;
 }
 
-ul {
-    list-style-type: disc;
-}
-
 /* Management */
 
 .collapsible-header .btn {
@@ -108,3 +115,39 @@ ul {
     margin: 15px 30px 0 0;
 }
 
+/* Medium and above */
+
+@media (min-width: 768px) {
+/* Global */
+
+form {
+    margin: 0.75rem 0;
+}
+
+/* Recipe Page */
+.card-styles p {
+    width: 100%;
+    line-height: 105%;
+}
+
+/* Recipes Page */
+.card {
+    height: 425px;
+}
+
+.card-image img {
+    padding: 0.5rem 0;
+    height: 250px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.card .card-title {
+    margin: 20px 0;
+}
+
+.card i {
+    padding-right: 10px;
+}
+
+}
