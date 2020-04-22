@@ -3,6 +3,26 @@
     font-family: 'Roboto', sans-serif;
 }
 
+form {
+    margin: 0.75rem 0;
+}
+
+/* Base */
+
+.sidenav{
+    background: #ee6e73;
+}
+
+.sidenav li a {
+    font-size: 20px;
+    padding-top: 20px;
+    color: #ffffff;
+}
+
+.sidenav li:first-child {
+    margin-top: 80px;
+}
+
 /* Recipes Page */
 
 .card {
@@ -68,3 +88,23 @@
 ul {
     list-style-type: disc;
 }
+
+/* Management */
+
+.collapsible-header .btn {
+    width: 80px;
+    margin: 5px 5px;
+    font-size: 12px;
+    padding: 0 0px;
+    font-weight: 500;
+}
+
+.task_header {
+    margin: auto 0;
+}
+
+.add-button {
+    float: right;
+    margin: 15px 30px 0 0;
+}
+
