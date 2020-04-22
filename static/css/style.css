@@ -57,7 +57,7 @@ form {
 
 .card-styles p {
     font-family: 'Lato', sans-serif;
-    width: 80%;
+    width: 100%;
 }
 
 .card i {
@@ -67,12 +67,24 @@ form {
 
 .card-styles a {
     font-size: 16px;
-    color: black;
     font-family: 'Lato', sans-serif;
     color: #7a7a7a;
 }
 
 .card-styles a:hover {
+    cursor: pointer;
+    color: #ee6e73;
+}
+
+.into {
+    font-family: 'Lato', sans-serif;
+}
+
+.intro a {
+    color: #7a7a7a;
+}
+
+.intro a:hover {
     cursor: pointer;
     color: #ee6e73;
 }
@@ -127,7 +139,7 @@ form {
 /* Recipe Page */
 .card-styles p {
     width: 100%;
-    line-height: 105%;
+    line-height: 1.5;
 }
 
 /* Recipes Page */
