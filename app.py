@@ -21,10 +21,11 @@ def get_recipe(recipe_id):
     return render_template('recipe.html', recipe=_recipe)
 
 
-@app.route('/add_recipe')
-def add_recipe():
+@app.route('/manage_recipes')
+def manage_recipes():
+    recipe = mongo.db.recipes.find()
     categories = mongo.db.meal_category.find()
-    return render_template("addrecipe.html", categories=categories)
+    return render_template('managerecipes.html', recipes=recipe, categories=categories)
 
 
 @app.route('/insert_recipe', methods=['POST'])

@@ -1,7 +1,70 @@
-li {
-    list-style-type: circle;
+/* Global */
+.header {
+    font-family: 'Roboto', sans-serif;
 }
 
-.card-row {
-    margin: 0 auto;
+/* Recipes Page */
+
+.card {
+    margin: 1rem 0;
+}
+
+.activator {
+    padding: 0.5rem 0;
+    max-height: 350px;
+}
+
+.card .card-title {
+    margin: -5px 0;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.card-styles h5 {
+    font-size: 20px;
+}
+
+.card-styles p {
+    font-family: 'Lato', sans-serif;
+    width: 80%;
+}
+
+.card i {
+    color: #ee6e73;
+    padding-right: 15px;
+}
+
+.card-styles a {
+    font-size: 16px;
+    color: black;
+    font-family: 'Lato', sans-serif;
+    color: #7a7a7a;
+}
+
+.card-styles a:hover {
+    cursor: pointer;
+    color: #ee6e73;
+}
+
+/* Recipe Page */
+
+.recipe-container {
+    margin: 0.5rem 0;
+}
+
+.recipe-container img {
+    margin: 0.5rem 0;
+}
+
+.recipe-container p {
+    width: 90%;
+    font-family: 'Lato', sans-serif;
+}
+
+.text-container {
+    padding: 0 0.75rem;
+}
+
+ul {
+    list-style-type: disc;
 }

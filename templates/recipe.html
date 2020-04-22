@@ -2,15 +2,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <div class="col s12">
+    <div class="col s12 recipe-container">
         <img class="col s12" src="{{recipe.recipe_image}}" alt="recipe image">
-        <h3>{{recipe.recipe_name.title()}}</h3>
-        <h4>Perfect for {{recipe.category_name.title()}}</h4>
-        <p class="intro">{{recipe.recipe_intro}}</p>
-        <h4>Ingredients:</h4>
-        <p class="ingredients"></p>
-        <h4>Instructions:</h4>
-        <p class="instructions"></p>
+        <div class="text-container">
+            <h4 class="header">{{recipe.recipe_name.title()}}</h4>
+            <h5 class="header">Perfect for {{recipe.category_name.title()}}</h5>
+            <p class="intro">{{recipe.recipe_intro}}</p>
+            <h5 class="header">Ingredients:</h5>
+            <p class="ingredients"></p>
+            <h5 class="header">Instructions:</h5>
+            <p class="instructions"></p>
+        </div>
     </div>
 </div>
 
