@@ -22,7 +22,7 @@ All content is centered to draw used attention and make appropriate use of the s
   * Responsive design
   * Full-stack application
   * User input allowed
-  * Data persists
+  * Data persists across user sessions
   * Editing of data allowed in-app
 
 **Features Left to Implement**
@@ -51,6 +51,7 @@ Using browser developer tools, multiple device sizes were also tested to ensure 
 * Functionality\
 Functionality of this site was tested across a variety of browsers and mobile devices to ensure essential features worked as intended.\
 A bug noted during testing was that when editing a recipe, the category would not update with the previous value. This was leading to the recipe category always updating. This bug was addressed and further testing confirmed it was fixed.
+Also, JS console errors were noted on testing. This was investigated and was due to 'undefined variables' ocourring on all pages except recipe.html. This was ocourring as JS in the scripts.js page required variables defined in the recipe.html page. To address this, the script.js file was removed and all required JS was moved to the recipe.html page within a script tag.
 
 **Infastructure**\
 The application is a full-stack application built on the frontend using the Materialize CSS framework and the backend using Python, Flask, MongoBD and PyMongo. This fullstack setup allows users to add, edit and delete recipes and recipe categories as required. Data from the MongoDB database is generated dynamically using PyMongo is conjunction with Flask to reduce code replication (DRY programming). This also ensures that the application can scale to accomidate as many recipes as users wish to input. 
@@ -61,7 +62,7 @@ This site is hosted using [Heroku](https://www.heroku.com/), deployed directly f
 A deployed live version of this application is available [here](https://recipe-share-app.herokuapp.com/)
 
 To run locally, you can clone this repository directly into the editor of your choice by pasting 'git clone https://github.com/SeanLewisIRE/recipe_app.git'  into your terminal. 
-Required packages can be installed using the included 'requirements.txt' file by typing '$pip3 install -r requirements.txt' into the terminal. Installing these packages will allow for the application to be run locally by typing 'python3 app.py'.
+Required packages can be installed using the included 'requirements.txt' file by typing '$pip3 install -r requirements.txt' into the terminal. Installing these packages will allow for the application to be run locally by typing 'python3 app.py'. (DB usernames and passwords required)
 To cut ties with this GitHub repository, type git remote rm origin into the terminal.
 
 ## Credits
