@@ -4,10 +4,15 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'recipie_app'
-app.config["MONGO_URI"] = 'mongodb+srv://root:NecfIPUD5PTBlYMe@practicecluster-tjxfj.mongodb.net/recipie_app?retryWrites=true&w=majority'
+mongo_cluster = os.environ.get('MONGO_CLUSTER_NAME')
+mongo_dbname = os.environ.get('MONGO_DB_NAME')
+mongo_username = os.environ.get('MONGO_DB_USERNAME')
+mongo_password = os.environ.get('MONGO_DB_PASSWORD')
+app.config["MONGO_DBNAME"] = mongo_dbname
+app.config["MONGO_URI"] = 'mongodb+srv://' + mongo_username + ':' + mongo_password + '@' + mongo_cluster + '-tjxfj.mongodb.net/' + mongo_dbname + '?retryWrites=true&w=majority'
 mongo = PyMongo(app)
 
+# 'mongodb+srv://MONGO_DB_USERNAME:MONGO_DB_PASSWORD@MONGO_CLUSTER_NAME-tjxfj.mongodb.net/MONGO_DB_NAME?retryWrites=true&w=majority'
 
 @app.route('/')
 def recipes_page():
